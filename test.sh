@@ -7,7 +7,7 @@ echo    "file                           | exception | error | shutdown | exit co
 echo -n "------------------------------ | --------- | ----- | -------- | ---------"
 
 for f in error-*.php; do
-	php -d display_errors=0 -f test.php $f || echo -n $?
+	php -f test.php $f || echo -n $?
 done
 
 echo ""
