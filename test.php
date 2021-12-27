@@ -1,7 +1,7 @@
 <?php
 
 // Usage:
-// php -f test.php syntax-error.php
+// php -f test.php error-syntax-error.php
 
 echo "Running {$argv[1]}...\n";
 
@@ -13,11 +13,11 @@ echo "Running {$argv[1]}...\n";
 
 
 // QM fatals:
-// E_ERROR             memory, undefined-function, incorrect-param-type, too-few-params
-// E_PARSE             syntax-error, eval-error
-// E_COMPILE_ERROR     require-not-found
-// E_USER_ERROR        user-error
-// E_RECOVERABLE_ERROR incorrect-param-type (PHP < 7)
+// E_ERROR             error-memory, error-undefined-function, error-incorrect-param-type, error-too-few-params
+// E_PARSE             error-syntax-error, error-eval-error
+// E_COMPILE_ERROR     error-require-not-found
+// E_USER_ERROR        error-user-error
+// E_RECOVERABLE_ERROR error-incorrect-param-type (PHP < 7)
 
 
 // Other fatals:
