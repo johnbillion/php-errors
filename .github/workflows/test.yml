@@ -27,7 +27,6 @@ jobs:
         php-version: ${{ matrix.php }}
         coverage: none
         tools: none
-        ini-values: display_errors=Off, display_startup_errors=Off, error_reporting=E_ALL, zend.assertions=1, assert.exception=1, memory_limit=4M, max_execution_time=9
       env:
         fail-fast: true
 
