@@ -8,7 +8,8 @@ echo -n "------------------------------ | -------------------- | ---------------
 
 for f in error-*.php; do
 	php \
-		-d display_errors=0 \
+		-d display_errors=Off \
+		-d display_startup_errors=Off \
 		-d error_reporting=E_ALL \
 		-d zend.assertions=1 \
 		-d assert.exception=1 \
