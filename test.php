@@ -5,40 +5,29 @@
 
 echo "Running {$argv[1]}...\n";
 
-
-
-
-// https://github.com/filp/whoops
-// https://symfony.com/doc/current/components/error_handler.html
-
-
-// QM fatals:
-// E_ERROR             error-memory, error-undefined-function, error-incorrect-param-type, error-too-few-params
-// E_PARSE             error-syntax-error, error-eval-error
-// E_COMPILE_ERROR     error-require-not-found
-// E_USER_ERROR        error-user-error
-// E_RECOVERABLE_ERROR error-incorrect-param-type (PHP < 7)
-
-
-// Other fatals:
-// E_CORE_ERROR
-
-
 $errors = [
-	E_ERROR             => 'E_ERROR', // Fatal
-	E_PARSE             => 'E_PARSE', // Fatal
-	E_CORE_ERROR        => 'E_CORE_ERROR', // Fatal
-	E_COMPILE_ERROR     => 'E_COMPILE_ERROR', // Fatal
-	E_USER_ERROR        => 'E_USER_ERROR', // Fatal
-	E_RECOVERABLE_ERROR => 'E_RECOVERABLE_ERROR', // Fatal
+	// Fatal
+	E_ERROR             => 'E_ERROR',
+	E_PARSE             => 'E_PARSE',
+	E_CORE_ERROR        => 'E_CORE_ERROR',
+	E_COMPILE_ERROR     => 'E_COMPILE_ERROR',
+	E_USER_ERROR        => 'E_USER_ERROR',
+	E_RECOVERABLE_ERROR => 'E_RECOVERABLE_ERROR',
 
+	// Warning
 	E_WARNING           => 'E_WARNING',
-	E_NOTICE            => 'E_NOTICE',
 	E_CORE_WARNING      => 'E_CORE_WARNING',
 	E_COMPILE_WARNING   => 'E_COMPILE_WARNING',
 	E_USER_WARNING      => 'E_USER_WARNING',
+
+	// Notice
+	E_NOTICE            => 'E_NOTICE',
 	E_USER_NOTICE       => 'E_USER_NOTICE',
+
+	// Strict
 	E_STRICT            => 'E_STRICT',
+
+	// Deprecated
 	E_DEPRECATED        => 'E_DEPRECATED',
 	E_USER_DEPRECATED   => 'E_USER_DEPRECATED',
 ];
