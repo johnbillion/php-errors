@@ -3,8 +3,8 @@
 # -o pipefail Produce a failure return code if any command errors
 set -o pipefail
 
-echo    "file                           | exception | error | shutdown | exit code"
-echo -n "------------------------------ | --------- | ----- | -------- | ---------"
+echo    "file                           | exception handler    | error handler        | shutdown handler     | exit code"
+echo -n "------------------------------ | -------------------- | -------------------- | -------------------- | ---------"
 
 for f in error-*.php; do
 	php -f test.php $f || echo -n $?
