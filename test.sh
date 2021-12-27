@@ -11,3 +11,5 @@ for f in error-*.php; do
 done
 
 echo ""
+
+exit 0
