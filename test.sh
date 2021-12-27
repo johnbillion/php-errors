@@ -7,7 +7,7 @@ echo    "file                           | exception handler    | error handler  
 echo -n "------------------------------ | -------------------- | -------------------- | -------------------- | ---------"
 
 for f in error-*.php; do
-	php -f test.php $f || echo -n $?
+	php -d memory_limit=4M -d max_execution_time=5 -f test.php $f || echo -n $?
 done
 
 echo ""
