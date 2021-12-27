@@ -43,26 +43,29 @@ $errors = [
 	E_USER_DEPRECATED   => 'E_USER_DEPRECATED',
 ];
 
-// set_exception_handler( function( \Throwable $e ) {
-//     echo('=== EXCEPTION ===') . "\n";
-//     echo(get_class($e)) . "\n";
-//     echo($e->getCode()) . "\n";
-//     echo($e->getMessage()) . "\n";
-//     echo('=================') . "\n";
-// } );
+set_exception_handler( function( $e ) {
+	echo "\n";
+    echo('=== CAUGHT BY EXCEPTION HANDLER ===') . "\n";
+    echo(get_class($e)) . "\n";
+    echo($e->getCode()) . "\n";
+    echo($e->getMessage()) . "\n";
+    echo('===================================') . "\n";
+} );
 
 set_error_handler(function(...$e) use ( $errors )   {
 	// this doesn't catch fatals, but it does catch a E_USER_ERROR
-	echo('=== ERROR ===') . "\n";
+	echo "\n";
+	echo('=== CAUGHT BY ERROR HANDLER ===') . "\n";
 	echo($e[1]) . "\n";
 	echo($errors[ $e[0] ]) . "\n";
-	echo('=============') . "\n";
+	echo('===============================') . "\n";
 });
 
 register_shutdown_function( function() use ( $errors ) {
 	// this can see a fatal which isn't caught by the exception handler
 	$e = error_get_last();
-	echo('=== SHUTDOWN ===') . "\n";
+	echo "\n";
+	echo('=== SHUTDOWN FUNCTION ===') . "\n";
 	if ( $e ) {
 		echo($e['type']) . "\n";
 		echo($errors[ $e['type'] ]) . "\n";
@@ -70,7 +73,7 @@ register_shutdown_function( function() use ( $errors ) {
 	} else {
 		echo('no error') . "\n";
 	}
-	echo('================') . "\n";
+	echo('=========================') . "\n";
 } );
 
 require $argv[1];
