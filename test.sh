@@ -8,7 +8,14 @@ echo -n "------------------------------ | -------------------- | ---------------
 
 for f in error-*.php; do
 	start=$SECONDS
-	php -d display_errors=0 -d memory_limit=4M -d max_execution_time=9 -f test.php $f && echo -n "$(( SECONDS - start ))    | " || echo -n "$(( SECONDS - start ))    | $?"
+	php \
+		-d display_errors=0 \
+		-d error_reporting=E_ALL \
+		-d memory_limit=4M \
+		-d max_execution_time=9 \
+		-f test.php $f \
+		&& echo -n "$(( SECONDS - start ))    | " \
+		|| echo -n "$(( SECONDS - start ))    | $?"
 done
 
 echo ""
