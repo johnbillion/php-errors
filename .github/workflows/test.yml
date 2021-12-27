@@ -13,22 +13,8 @@ jobs:
     strategy:
       matrix:
         php: ['8.1', '7.4', '7.2', '5.6']
-        file: [
-          'arithmetic',
-          'assertion',
-          'division',
-          'eval-error',
-          'incorrect-param-type',
-          'memory',
-          'require-not-found',
-          'syntax-error',
-          'too-few-arguments',
-          'uncaught-exception',
-          'undefined-function',
-          'user-error',
-        ]
       fail-fast: false
-    name: PHP ${{ matrix.php }} ${{ matrix.file }}
+    name: PHP ${{ matrix.php }}
     runs-on: ubuntu-18.04
     timeout-minutes: 1
     steps:
@@ -49,4 +35,4 @@ jobs:
         php -m
 
     - name: Run test
-      run: php -f test.php error-${{ matrix.file }}.php
+      run: test.sh
