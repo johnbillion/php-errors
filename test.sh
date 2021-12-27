@@ -10,6 +10,7 @@ for f in error-*.php; do
 	php \
 		-d display_errors=0 \
 		-d error_reporting=E_ALL \
+		-d assert.exception=1 \
 		-d memory_limit=4M \
 		-d max_execution_time=9 \
 		-f test.php $f \
