@@ -73,28 +73,4 @@ register_shutdown_function( function() use ( $errors ) {
 	echo('================') . "\n";
 } );
 
-
-echo "\n\n";
-echo( "************* TRYing *************" ) . "\n";
-echo( "**********************************" ) . "\n";
-echo "\n";
-
-try {
-
-	require $argv[1];
-
-} catch ( \Throwable $e ) {
-	// this catches any error
-	echo('=== CAUGHT ===') . "\n";
-	echo(get_class($e)) . "\n";
-	echo($e->getCode()) . "\n";
-	echo($e->getMessage()) . "\n";
-	echo('===============') . "\n";
-}
-
-echo "\n\n";
-echo( "************* DOing *************" ) . "\n";
-echo( "*********************************" ) . "\n";
-echo "\n";
-
 require $argv[1];
