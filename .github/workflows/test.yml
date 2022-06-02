@@ -36,7 +36,4 @@ jobs:
         php -m
 
     - name: Run test
-      run: ./test.sh
-
-    - name: Adding markdown
-      run: echo '### Powered by PHP ${{ matrix.php }}' >> $GITHUB_STEP_SUMMARY
+      run: ./test.sh | tee $GITHUB_STEP_SUMMARY
