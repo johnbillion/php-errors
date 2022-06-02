@@ -17,6 +17,8 @@ jobs:
     name: PHP ${{ matrix.php }}
     runs-on: ubuntu-18.04
     timeout-minutes: 1
+    outputs:
+      "output-${{ matrix.php }}": Here is output from ${{ steps.test.outputs.php }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -36,4 +38,25 @@ jobs:
         php -m
 
     - name: Run test
-      run: ./test.sh | tee $GITHUB_STEP_SUMMARY
+      id: test
+      run: |
+        ./test.sh | tee $GITHUB_STEP_SUMMARY
+        echo "::set-output name=php::${{ matrix.php }}"
+
+  results:
+    needs: [build]
+    name: Results
+    runs-on: ubuntu-18.04
+    timeout-minutes: 1
+    steps:
+      - name: Output
+        run: |
+          echo ${{ needs.build.outputs.output-8.2 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-8.1 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-8.0 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-7.4 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-7.3 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-7.2 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-7.1 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-7.0 }} > $GITHUB_STEP_SUMMARY
+          echo ${{ needs.build.outputs.output-5.6 }} > $GITHUB_STEP_SUMMARY
