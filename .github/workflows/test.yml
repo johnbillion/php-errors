@@ -27,12 +27,13 @@ jobs:
   build:
     strategy:
       matrix:
-        php: ['8.2', '8.1', '8.0', '7.4', '7.3', '7.2', '7.1', '7.0', '5.6']
+        php: ['8.3', '8.2', '8.1', '8.0', '7.4', '7.3', '7.2', '7.1', '7.0', '5.6']
       fail-fast: false
     name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
     timeout-minutes: 1
     outputs:
+      "8.3": ${{ steps.test.outputs['php-8.3'] }}
       "8.2": ${{ steps.test.outputs['php-8.2'] }}
       "8.1": ${{ steps.test.outputs['php-8.1'] }}
       "8.0": ${{ steps.test.outputs['php-8.0'] }}
@@ -74,6 +75,7 @@ jobs:
     steps:
       - name: Output
         run: |
+          echo ${{ needs.build.outputs['8.3'] }} >> $GITHUB_STEP_SUMMARY
           echo ${{ needs.build.outputs['8.2'] }} >> $GITHUB_STEP_SUMMARY
           echo ${{ needs.build.outputs['8.1'] }} >> $GITHUB_STEP_SUMMARY
           echo ${{ needs.build.outputs['8.0'] }} >> $GITHUB_STEP_SUMMARY
