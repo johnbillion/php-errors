@@ -65,7 +65,7 @@ jobs:
       id: test
       run: |
         ./test.sh | tee $GITHUB_STEP_SUMMARY
-        echo "::set-output name=php-${{ matrix.php }}::${{ matrix.php }}"
+        echo "php-${{ matrix.php }}=${{ matrix.php }}" >> $GITHUB_OUTPUT
 
   results:
     needs: [build]
