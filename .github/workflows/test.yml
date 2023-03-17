@@ -70,7 +70,7 @@ jobs:
   results:
     needs: [build]
     name: Results
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
       - name: Output
