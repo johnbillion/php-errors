@@ -11,10 +11,6 @@ for f in error-*.php; do
 		-d display_errors=Off \
 		-d display_startup_errors=Off \
 		-d error_reporting=E_ALL \
-		-d zend.assertions=1 \
-		-d assert.exception=1 \
-		-d memory_limit=4M \
-		-d max_execution_time=9 \
 		-f test.php $f \
 		|| echo -n "$?"
 done

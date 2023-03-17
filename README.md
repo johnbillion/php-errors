@@ -15,6 +15,7 @@ Most PHP errors can be caught or seen by userland PHP by using a combination of:
 Newer versions of PHP allow more error types to be caught and handled, including fatals.
 
 * In PHP 8.0 and higher, the only error type that cannot be caught is an out of memory error
+  - The error can be seen by the shutdown handler though
 * In all versions of PHP 7, an unsatisfied `require` or `require_once` also cannot be caught
 * In PHP 5.6, a syntax error and a call to an undefined function also cannot be caught
 
