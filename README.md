@@ -19,6 +19,5 @@ Newer versions of PHP allow more error types to be caught and handled, including
   - Maximum execution time exceeded
   - Compile-time errors
 * In all versions of PHP 7, an unsatisfied `require` or `require_once` also cannot be caught
-* In PHP 5.6, a syntax error and a call to an undefined function also cannot be caught
 
 It appears that the shutdown handler can always see the error from `error_get_last()` even though it can't be caught. Whether or not userland code within the shutdown handler will execute successfully after such as error has not been determined.
